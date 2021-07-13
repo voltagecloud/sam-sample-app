@@ -17,6 +17,7 @@ Resources:
       CodeUri: ./sam-app/hello_world/
       Handler: app.lambda_handler
       Runtime: python3.8
+      Bucket: testbucket9993
       Events:
         HelloWorld:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
@@ -31,6 +32,7 @@ Resources:
       CodeUri: ./sam-app-2/hello_world/
       Handler: app.lambda_handler
       Runtime: python3.8
+      Bucket: testbucket9992
       Events:
         HelloWorld:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
