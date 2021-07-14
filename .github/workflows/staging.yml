@@ -11,7 +11,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-      hello_world_working_directory: './sam-app'
+      hello_world_working_directory: '.'
       aws_region: "us-west-1"
       sam_stack_name: "teststack1" 
       sam_s3_bucket: "testbucket9993"
