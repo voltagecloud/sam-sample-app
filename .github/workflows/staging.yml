@@ -14,8 +14,7 @@ jobs:
       hello_world_working_directory: './sam-app'
       aws_region: "us-west-1"
       sam_stack_name: "teststack1" 
-      sam_s3_bucket_1: "testbucket9993"
-      sam_s3_bucket_2: "testbucket9992"
+      sam_s3_bucket: "testbucket9993"
       
     strategy:
       matrix:
@@ -39,8 +38,8 @@ jobs:
         aws-region: ${{ env.aws_region }}
         
     - run: sam build --use-container -t '../template.yaml'
-      working-directory: ${{ env.hello_world_working_directory }}
+      #working-directory: ${{ env.hello_world_working_directory }}
     - run: sam validate -t '../template.yaml'
-      working-directory: ${{ env.hello_world_working_directory }}
+      #working-directory: ${{ env.hello_world_working_directory }}
     - run: sam deploy --stack-name ${{ env.sam_stack_name }} --s3-bucket ${{ env.sam_s3_bucket }} --capabilities CAPABILITY_IAM -t '../template.yaml'
-      working-directory: ${{ env.hello_world_working_directory }}
+      #working-directory: ${{ env.hello_world_working_directory }}
