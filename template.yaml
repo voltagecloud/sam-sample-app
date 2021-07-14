@@ -31,16 +31,18 @@ Resources:
   HelloWorldFunction2:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
-      CodeUri: ./sam-app-2/hello_world/
-      Handler: app.lambda_handler
+      CodeUri: ./hello_world_function
+      Handler: hello_world/app.lambda_handler
       Runtime: python3.8
-      #Bucket: testbucket9992
       Events:
         HelloWorld:
-          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Type: CloudWatchEvent # More info about CloudWatchEvent Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#cloudwatchevent
           Properties:
-            Path: /hello
-            Method: get
+            Pattern:
+              source:
+                - aws.ec2
+              detail-type:
+                - EC2 Instance State-change Notification
 
   SamApp2: 
     Type: AWS::S3::Bucket
